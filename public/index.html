@@ -11,15 +11,16 @@
           <form>
             <div class="form-group">
               <label for="searchInput">Search Slated</label>
-              <input type="text" class="form-control" id="searchInput" ng-model="term" placeholder="Enter keyword">
+              <input type="text" class="form-control" ng-keydown="keypress($event)" placeholder="Enter keyword">
             </div>
-            <button type="submit" class="btn btn-default" ng-click="search(term)">Submit</button>
           </form>
         </div>
       </div>
       <div class="row" ng-repeat="items in data">
         <div class="col-md-4">
-          {{trustString(items.image_code)}}
+        <span ng-bind-html="trustString(items.link_code)"></span>
+        <div ng-bind-html="trustString(items.image_code)">
+        </div>
         </div>
       </div>
     </div>

@@ -6,14 +6,14 @@ app.controller('mainController', function($scope, $http, $sce){
   var term = "";
 
   $scope.keypress = function($event){
-    if($event.keyCode === 8){
+    var keyCode = $event.keyCode
+    if(keyCode === 8){
       term = term.slice(0, -1);
-    } else {
-      var input = String.fromCharCode($event.keyCode).toLowerCase()
+    } else if(keyCode >= 65 && keyCode <= 90 || keyCode === 32){
+      var input = String.fromCharCode(keyCode).toLowerCase()
       term+= input;
     }
     console.log(term)
-
     $http({
       method: "POST",
       url: "/search",

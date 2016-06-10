@@ -1,7 +1,7 @@
 var app = angular.module("slated", ['ngSanitize'])
 
-app.controller('mainController', function($scope, $http, $location, $sce){
-  app.$inject = ['$http', '$location'];
+app.controller('mainController', function($scope, $http, $sce){
+  app.$inject = ['$http', '$sce'];
 
   $scope.search = function(term){
     $http({
@@ -15,7 +15,6 @@ app.controller('mainController', function($scope, $http, $location, $sce){
   }
 
   $scope.trustString = function(image){
-  
     return $sce.trustAsHtml(image)
   }
 })

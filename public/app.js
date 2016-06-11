@@ -13,14 +13,16 @@ app.controller('mainController', function($scope, $http, $sce){
       var input = String.fromCharCode(keyCode).toLowerCase()
       term+= input;
     }
-    console.log(term)
     $http({
       method: "POST",
       url: "/search",
       data: {term: term}
     })
     .then(function(response){
-      $scope.data = response.data;
+      console.log(response)
+      if(response.config.data.term === term){
+        $scope.data = response.data;
+      }
     })
   }
 

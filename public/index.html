@@ -3,6 +3,7 @@
   <head>
     <title></title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="default.css" rel="stylesheet">
   </head>
   <body ng-app="slated">
     <div class="container" ng-controller="mainController as main">
@@ -17,10 +18,17 @@
         </div>
       </div>
       <div class="row" ng-repeat="items in data">
+        <hr>
         <div class="col-md-4">
-        <span ng-bind-html="trustString(items.link_code)"></span>
-        <div ng-bind-html="trustString(items.image_code)">
+          <h4><span ng-bind-html="trustString(items.link_code)"></span></h4>
+          <div class="images" ng-bind-html="trustString(items.image_code)">
+          </div>
         </div>
+        <div class="col-md-4">
+          <h4><span>Description</span></h4>
+          {{items.description}}
+          <p>
+          <span><strong>Year:</strong> {{items.year}} <br><strong>Type:</strong> {{items.obj_type}}</span>
         </div>
       </div>
     </div>

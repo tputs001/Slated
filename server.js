@@ -7,6 +7,7 @@ app.use(express.static('./public'));
 app.use(bodyParser.json());
 
 app.post('/search', function(req, res){
+  console.log(req.body.term)
   request({
     url: 'http://www.slated.com/films/autocomplete/profiles/?',
     qs: {
